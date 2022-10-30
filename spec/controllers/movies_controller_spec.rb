@@ -18,4 +18,21 @@ RSpec.describe MoviesController, type: :controller do
   ##### Part 3 #####
   # Write your tests here
   # describe "my feature" do
+  describe "create method" do
+    it "creates a movie" do
+      Movie.create(title: "Iron Man 2", director: "Jon Favreau",
+                   rating: "PG-13", release_date: "20010-05-02")
+
+      # movie = Movie.find_by_title("Iron Man")
+      # other_movies = movie.others_by_same_director()
+      expect(Movie.where(title: "Iron Man 2")).to eq 1
+      # expect(other_movies).to include(Movie.find_by_title("Spider-Man: Homecoming"))
+    end
+
+    it "does not return movies by other directors" do
+      movie = Movie.find_by_title("Big Hero 6")
+      other_movies = movie.others_by_same_director()
+      expect(other_movies).to be_empty
+    end
+  end
 end

@@ -32,3 +32,16 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+
+Scenario: create a movie
+  When I go to the create page
+  And  I fill in "Title" with "Interstellar"
+  And  I fill in "Director" with "Christopher Nolan"
+  And  I press "Save Changes"
+  Then the director of "Interstellar" should be "Christopher Nolan"
+
+Scenario: delete a movie
+  Given I am on the details page for "Alien"
+  When  I follow "Delete"
+  And   I follow "OK"
+  But   I should not see "Alien"

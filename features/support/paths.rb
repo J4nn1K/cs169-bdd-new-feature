@@ -30,6 +30,9 @@ module NavigationHelpers
     when /^the Similar Movies page for "(.*)"/i
       similar_movies_path(Movie.find_by(title: $1))
     
+    when /^the create page/i
+      new_movie_path()
+    
     else
       begin
         page_name =~ /^the (.*) page$/
