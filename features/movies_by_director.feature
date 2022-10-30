@@ -43,5 +43,4 @@ Scenario: create a movie
 Scenario: delete a movie
   Given I am on the details page for "Alien"
   When  I follow "Delete"
-  And   I follow "OK"
-  But   I should not see "Alien"
+  Then  "Alien" should not exist 

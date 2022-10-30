@@ -30,3 +30,7 @@ end
 Then /the director of "(.*)" should be "(.*)"/ do |movie, director|
   expect(Movie.find_by_title(movie).director).to eq director
 end
+
+Then /"(.*)" should not exist/ do |movie|
+  expect(Movie.find_by_title(movie)).to eq nil
+end
